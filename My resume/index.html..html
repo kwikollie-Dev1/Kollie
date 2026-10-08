@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume | Kwi Kollie</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#077654',
+                            700: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #e2e8f0;
+            transform: translateX(-50%);
+        }
+        .dark .timeline-line::before {
+            background: #334155;
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <a href="#hero" class="text-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent hover:opacity-80 transition">
+                    Kwi.Dev
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#about" class="hover:text-sky-500 transition">About</a>
+                    <a href="#experience" class="hover:text-sky-500 transition">Experience</a>
+                    <a href="#education" class="hover:text-sky-500 transition">Education</a>
+                    <a href="#skills" class="hover:text-sky-500 transition">Skills</a>
+                    <a href="#contact" class="hover:text-sky-500 transition">Contact</a>
+                </nav>
+
+                <!-- Action Controls: Dark Mode Toggle & Mobile Menu Switch -->
+                <div class="flex items-center space-x-3">
+                    <button id="themeToggle" aria-label="Toggle Theme" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+            <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Education</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero / Biodata Section -->
+    <section id="hero" class="pt-28 pb-16 md:pt-36 md:pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+            <!-- Profile Info -->
+            <div class="flex-1 text-center md:text-left space-y-4">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                    Available for New Opportunities
+                </span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                    Hi, I'm <span class="bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">Kwi Kollie</span>
+                </h1>
+                <p class="text-xl font-medium text-slate-600 dark:text-slate-300">
+                    Computer Hardware and Software Engineer and currently doing MIS at STARZ University.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-slate-500 dark:text-slate-400 pt-2">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-envelope text-sky-500"></i> kwikollie99@gmail.com</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-sky-500"></i> +231(776) 057188</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-sky-500"></i> Sayon Town, Bushrod Island, Monrovia, Liberia</span>
+                </div>
+                <!-- Social Links -->
+                <div class="flex justify-center md:justify-start space-x-4 pt-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition">
+                        <i class="fa-brands fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition">
+                        <i class="fa-brands fa-x-twitter text-lg"></i>
+                    </a>
+                    <a href="https://web.facebook.com/?_rdc=1&_rdr#" class="px-5 py-2.5 rounded-full bg-sky-600 text-white font-medium text-sm hover:bg-sky-700 shadow-md hover:shadow-lg transition">
+                        Hire Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Avatar Placeholder -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-sky-1200 to-indigo-1600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                <img src="KK.jpg" 
+                     onerror="this.src='https://placehold.co/400x400/0284c7/ffffff?text=Kwi'" 
+                     alt="Kwi Profile Photo" 
+                     class="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full object-cover border-4 border-white dark:border-slate-900 shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Statement Section -->
+    <section id="about" class="py-16 bg-white dark:bg-slate-800/50 transition">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Profile Statement</h2>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+            <div class="glass p-8 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-lg space-y-4 leading-relaxed text-slate-600 dark:text-slate-300 text-lg">
+                <p>
+                    I am a passionate and solution-driven Senior Full-Stack Computer Hardware and Software Engineer with over 9 Years<span class="font-semibold text-slate-900 dark:text-white">9+ years of experience</span> Hardware, Software, high-performing web applications.
+                </p><p>Specializing The maintenance of every computer of all programs at Country Office.Data Entry in radar software from 2009 to 2011. The maintenance of internet service, both local and wireless,
+Network Printing and file sharing and Server maintained at country office. Maintenance of all Area and Branch offices computers, Printers,
+Voltage Stabilizer and UPS. Give support to Data entry, Account Assistants, Area Accountants and Area Managers to the RADAR Software Run Service pack properly and also give instruction to Area Accountant, Data Entrant how can they run service Pack. Assist IT in-charge. Maintenance of all IT related inventory and give update, Information to IT in-charge. Update KIVA Loan Record monthly.Performed other functions assign by the Supervisor. Give monthly support to all thirty (30) Branches via mobile/
+physical support. Maintain Stock & Inventory log by register, make new requisition according to format. Train Branch Accountant, Branch Manager the use of software, Computer & IT Equipment.
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Work Experience</h2>
+            <div class="w-16 h-1 bg-sky-500 mx-auto mt-2 rounded-full"></div>
+        </div>
+
+        <div class="relative timeline-line space-y-8">
+            <!-- Job 1 -->
+            <div class="relative flex flex-col md:flex-row items-center group">
+                <div class="flex items-center justify-start w-full md:w-1/2 md:pr-8 md:text-right">
+                    <div class="w-full p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md border border-slate-200 dark:border-slate-700">
+                        <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">2026 - Present</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">IT Service Manager</h3>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Brac Liberia Microfinance Company Ltd.</p>
+                        <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside space-y-1 text-left">
+                            <li>JIRA Service Management, JIRA End users training for all users and prepared a list of Trainees Follow up ON isues resolution in seven days for the CIT and prepare a list of issues biweekly as well as report to the reporters giving a daily  field support to all fifty five Branches improving app performance by 85%.</li>
+                            <li>Designs and maintains a set of agreed KPI dashboards for IT service delivery to the Management, Seventh of every month all  KPI reports preparation ar done by me and ready for review by Brac International IT head and Country Head of IT .</li>
+                            <li>Agreement and vendor Management Read and understand all SLA and payment schedules for all vendors by end of the year. Monitor and timely report  on vendor service performance via  IT KPI dashboard. Run daily COB(closed of business day) Monitor and timely reporting of IT audit findingS, risk and compliance
+.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-500 border-4 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-8"></div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="relative flex flex-col md:flex-row items-center group">
+                <div class="w-full md:w-1/2 md:pr-8"></div>
+                <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-500 border-4 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="flex items-center justify-start w-full md:w-1/2 md:pl-8">
+                    <div class="w-full p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md border border-slate-200 dark:border-slate-700">
+                        <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">2009 - 2011</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">IT Assistant</h3
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">BRAC LIBERIA</p>
+                        <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside space-y-1">
+                            <li>The maintenance of every computer of all programs at Country Office.Data Entry in radar software from 2009 to 2011. The maintenance of internet service, both local & wireless,Network Printing and file sharing & Server maintained at country office.Maintenance of all Area and Branch offices computer, Printers,Voltage Stabilizer & UPS.Give support to Data entry, Account Assistants, Area Accountantsand Area Managers to the RADAR SoftwareRun Service pack properly and give instruction to AreaAccountant, Data Entrant how can they run service Pack and assist IT in-charge.
+</li>
+                            <li>Maintenance of all IT related inventory and give update,Information to IT in-charge.Update KIVA Loan Record monthly.Performed other functions assign by the Supervisor.Give monthly support to all thirty (30) Branches via mobile/physical support.
+</li>
+                            <li>Maintain Stock & Inventory log by register, make new requisition according to format.Train Branch Accountant, Branch Manager how to use the software, Computer & IT Equipment.
+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="relative flex flex-col md:flex-row items-center group">
+                <div class="flex items-center justify-start w-full md:w-1/2 md:pr-8 md:text-right">
+                    <div class="w-full p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md border border-slate-200 dark:border-slate-700">
+                        <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">2007 - 2008</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Teachers Assistant and Enumerator</h3>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Quelac Computer Institute and LISGIS</p>
+                        <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside space-y-1 text-left">
+                            <li>Maintenance of all computers at the school.Support teaching staffs when they are not around, Performed other functions assign by the boss.
+</li>
+                            <li>To check each Household in a particular community given to me by the Population and Housing Census supervisor (LISGIS) in West Point. Make daily report to my supervisor.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-500 border-4 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Background Section -->
+    <section id="education" class="py-16 bg-white dark:bg-slate-800/50 transition">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Educational Background</h2>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education Card 1 -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:shadow-lg transition">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-sky-500/10 text-sky-600 dark:text-sky-400 rounded-xl">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">2006-2008</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Diploma Computer Engineering and High School Certificate current studying at MIS at STARZ University Phomore Semester ii</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm font-medium">St. Edward Catholic School, Quelac Computer Institute, STARZ University</p>
+                            <p class="mt-2 text-sm text-slate-500 dark:text-slate-300">
+                                <span class="font-semibold text-slate-700 dark:text-slate-200">Key Coursework:</span>MIS.
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Card 2 -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:shadow-lg transition">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-xl">
+                            <i class="fa-solid fa-certificate text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400">2024</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">(T24) Temenos Backend and front end users TOT and Fraud management in microfinance institutions, Risk management, Anti-money laundering, Investigations </h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Straj and DNI</p>
+                            <p class="mt-2 text-sm text-slate-500 dark:text-slate-300">
+                                End Users TOT, Fraud management in microfinance institutions, Risk management, Anti-money laundering,Investigations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Technical Skills</h2>
+            <div class="w-16 h-1 bg-sky-500 mx-auto mt-2 rounded-full"></div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="flex justify-center flex-wrap gap-2 mb-10">
+            <button class="skill-btn active px-4 py-2 rounded-full text-sm font-medium transition bg-sky-600 text-white shadow" data-category="all">
+                All Skills
+            </button>
+            <button class="skill-btn px-4 py-2 rounded-full text-sm font-medium transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white" data-category="frontend">
+                Frontend
+            </button>
+            <button class="skill-btn px-4 py-2 rounded-full text-sm font-medium transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white" data-category="backend">
+                Backend
+            </button>
+            </button>
+        </div>
+
+        <!-- Skill Badges Container -->
+        <div id="skillsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <!-- Skill Cards generated dynamically or styled inline -->
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="frontend">
+                <i class="fa-brands fa-html5 text-3xl text-orange-500 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200">Basic HTML5 / CSS3</h4>
+                <p class="text-xs text-slate-500">Expert</p>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="frontend">
+                <i class="fa-brands fa-TBI text-3xl text-yellow-500 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200"> (T24)Temenos Backend Interface</p>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="frontend">
+                <i class="fa-brands fa-PSN text-3xl text-sky-400 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200"></h4>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200">Payroll System Nolan</p>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="frontend">
+                <i class="fa-brands fa-TFEUME-alt text-3xl text-sky-500 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200"> (T24)Temenos Front End users Interface MF Expert</p>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="backend">
+                <i class="fa-brands fa-node-RDC text-3xl text-green-500 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200">Remote Desktop Connection (Anydesk)</p>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="backend">
+                <i class="fa-solid fa-database text-3xl text-indigo-500 mb-2"></i>
+                <h4 class="font-semibold text-slate-800 dark:text-slate-200">SQL Server Management studio / WinSCP</h4>
+            </div>
+
+            <div class="skill-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm hover:shadow-md transition" data-category="tools">
+                <i class="fa-brands fa-git-alt text-3xl text-orange-600 mb-2"></i>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Copyright -->
+            <div class="text-sm text-center md:text-left">
+                <p>&copy; 2026 Kwi Kollie. All rights reserved.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="flex space-x-6 text-sm">
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#experience" class="hover:text-white transition">Experience</a>
+                <a href="#education" class="hover:text-white transition">Education</a>
+                <a href="#skills" class="hover:text-white transition">Skills</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTop" aria-label="Back to Top" class="fixed bottom-6 right-6 p-3 rounded-full bg-sky-600 text-white shadow-lg hover:bg-sky-700 transition opacity-0 pointer-events-none focus:outline-none">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom Vanilla JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme Switcher (Dark / Light Mode) ---
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+
+            // Detect user preference or saved setting
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Interactive Skill Filter ---
+            const skillBtns = document.querySelectorAll('.skill-btn');
+            const skillCards = document.querySelectorAll('.skill-card');
+
+            skillBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update Active Button Style
+                    skillBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-sky-600', 'text-white', 'shadow');
+                        b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                    });
+                    btn.classList.add('active', 'bg-sky-600', 'text-white', 'shadow');
+                    btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+                    const category = btn.getAttribute('data-category');
+
+                    // Filter Logic
+                    skillCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // --- Form Validation & Submission Animation ---
+            const contactForm = document.getElementById('contactForm');
+            const formAlert = document.getElementById('formAlert');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validate each required field
+                const fields = ['name', 'email', 'subject', 'message'];
+                fields.forEach(fieldId => {
+                    const input = document.getElementById(fieldId);
+                    const errorMsg = input.nextElementSibling;
+
+                    if (!input.value.trim() || (fieldId === 'email' && !validateEmail(input.value))) {
+                        isValid = false;
+                        errorMsg.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    } else {
+                        errorMsg.classList.add('hidden');
+                        input.classList.remove('border-red-500');
+                    }
+                });
+
+                if (isValid) {
+                    // Show success alert & reset form
+                    formAlert.classList.remove('hidden');
+                    contactForm.reset();
+
+                    // Hide notification after 5 seconds
+                    setTimeout(() => {
+                        formAlert.classList.add('hidden');
+                    }, 5000);
+                }
+            });
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // --- Back to Top Button ---
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
